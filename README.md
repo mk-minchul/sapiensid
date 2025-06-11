@@ -43,6 +43,5 @@ A dataset creation and management tool that:
 - Manages data organization and storage
 - Supports parallel processing for large-scale dataset creation
 - Integrates with wandb for monitoring download progress
-- 
 
 Refer to [WebBody/README.md](tasks/WebBody/README.md) for more details.
