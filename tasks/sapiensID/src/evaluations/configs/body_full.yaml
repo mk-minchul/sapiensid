@@ -1,0 +1,68 @@
+data_root: ${oc.env:WEBBODY_DATA_ROOT}
+eval_every_n_epochs: 1
+per_epoch_evaluations: {
+  "prcc_test": {
+    'path': '${oc.env:WEBBODY_DATA_ROOT}/validation_sets/prcc_test',
+    'evaluation_type': 'body_prcc',
+    'color_space': 'RGB',
+    'batch_size': 32,
+    'num_workers': 4
+  },
+  "webbody_test_25": {
+    'path': '${oc.env:WEBBODY_DATA_ROOT}/validation_sets/webbody_test/webbody_test_25',
+    'evaluation_type': 'body_wb_test',
+    'color_space': 'RGB',
+    'batch_size': 32,
+    'num_workers': 4
+  },
+  # "market_1501_test": {
+  #   'path': '${oc.env:WEBBODY_DATA_ROOT}/validation_sets/market_1501_test',
+  #   'evaluation_type': 'body_market_1501',
+  #   'color_space': 'RGB',
+  #   'batch_size': 32,
+  #   'num_workers': 4
+  # },
+  # "ltcc_test": {
+  #   'path': '${oc.env:WEBBODY_DATA_ROOT}/validation_sets/ltcc_test',
+  #   'evaluation_type': 'body_ltcc',
+  #   'color_space': 'RGB',
+  #   'batch_size': 32,
+  #   'num_workers': 4
+  # },
+  # "msmt17_test": {
+  #   'path': '${oc.env:WEBBODY_DATA_ROOT}/validation_sets/msmt17_test',
+  #   'evaluation_type': 'body_msmt17',
+  #   'color_space': 'RGB',
+  #   'batch_size': 32,
+  #   'num_workers': 4
+  # },
+  # "deepchange_test": {
+  #   'path': '${oc.env:WEBBODY_DATA_ROOT}/validation_sets/deepchange_test',
+  #   'evaluation_type': 'body_deepchange',
+  #   'color_space': 'RGB',
+  #   'batch_size': 32,
+  #   'num_workers': 4
+  # },
+  # "celebreid_test": {
+  #   'path': '${oc.env:WEBBODY_DATA_ROOT}/validation_sets/CelebReID_test',
+  #   'evaluation_type': 'body_celebreid',
+  #   'color_space': 'RGB',
+  #   'batch_size': 32,
+  #   'num_workers': 4
+  # },
+  # "ccda_test": {
+  #   'path': '${oc.env:WEBBODY_DATA_ROOT}/validation_sets/ccda_test',
+  #   'evaluation_type': 'body_ccda',
+  #   'color_space': 'RGB',
+  #   'batch_size': 32,
+  #   'num_workers': 4
+  # },
+  # "ccvid_test": {
+  #   'path': '${oc.env:WEBBODY_DATA_ROOT}/validation_sets/ccvid_test',
+  #   'evaluation_type': 'body_ccvid',
+  #   'color_space': 'RGB',
+  #   'batch_size': 32,
+  #   'num_workers': 4
+  # },
+}
+

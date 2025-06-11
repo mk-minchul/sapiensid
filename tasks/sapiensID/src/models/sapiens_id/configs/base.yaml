@@ -1,0 +1,62 @@
+color_space: 'RGB'
+name: 'mrm'
+output_dim: 4096 # output of the head dim (final feature dim)
+start_from: ''
+freeze: False
+pretrained_path: ''
+rgb_mean: [0.5, 0.5, 0.5]
+rgb_std: [0.5, 0.5, 0.5]
+input_size: [384, 384]
+square_pad: true
+mask_ratio: 0.66
+
+backbone:
+  name: 'face_vit_base'
+  dynamic_patch_base_size: 32
+  pos_embed_type: 'sincos_2d'
+  use_mask_token: true
+  vis: false
+  use_subset_loss: false
+  emb_dim: 512
+
+patch_embed_config:
+  name: 'dynamic'
+  use_fg_mask: true
+  use_mask_token: ${models.backbone.use_mask_token}
+  emb_dim: ${models.backbone.emb_dim}
+  dynamic_patch_base_size: ${models.backbone.dynamic_patch_base_size}
+  subset_method: 'face_first_0.3'
+  level_emdecoder_kv_attention_headsb: true
+
+rpe_config:
+  name: KPRPE_shared
+  rpe_on: k
+  shared_head: True
+  mode: ctx
+  method: product
+  ratio: 1.9
+  ctx_type: 'rel_keypoint_splithead_unshared_nonlinear'
+  num_keypoints: 19
+  kp_dim: ${models.backbone.emb_dim}
+
+head:
+  type: 'semantic_attention_head'
+  n_multiply_per_query: 4
+  depth: 1
+  num_heads: 1
+  model_parallel_size: 1
+  decoder_kv_attention_heads: 1
+  in_feature_dim: ${models.backbone.emb_dim}
+  output_dim: ${models.output_dim}
+  num_keypoints: ${models.rpe_config.num_keypoints}
+  emb_dim: ${models.backbone.emb_dim}
+  dataset_root_dirs: ${dataset.root_dirs}
+
+
+kp_preprocessor:
+  name: kp19
+  drop_idv_ldmk_prob: 0.05
+  drop_part_ldmk_prob: 0.05
+  bbox_aug_shift_range: 0.05
+  bbox_aug_scale_range: 0.05
+  bbox_drop_prob: 0.05

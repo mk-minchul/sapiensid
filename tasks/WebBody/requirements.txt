@@ -1,0 +1,6 @@
+pyarrow
+img2dataset
+wandb
+lightning==2.3.0
+lightning-cloud==0.5.57
+ultralytics

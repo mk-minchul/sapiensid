@@ -1,0 +1,12 @@
+data_root: ${oc.env:WEBBODY_DATA_ROOT}
+eval_every_n_epochs: 1
+per_epoch_evaluations: {
+  "prcc_test": {
+    'path': '${oc.env:WEBBODY_DATA_ROOT}/validation_sets/prcc_test',
+    'evaluation_type': 'body_prcc',
+    'color_space': 'RGB',
+    'batch_size': 32,
+    'num_workers': 4
+  },
+}
+

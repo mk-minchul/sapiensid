@@ -1,0 +1,11 @@
+name: keypoint_predictor
+start_from: ''
+freeze: True
+rgb_mean: ${models.rgb_mean}
+rgb_std: ${models.rgb_std}
+use_yolo: True
+use_openpose: False
+face_detector: 'dfa_mobilenetv4'
+faceness_threshold: 0.5
+use_aligned_face_template: False
+use_cache: True
